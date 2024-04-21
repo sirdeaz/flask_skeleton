@@ -6,4 +6,4 @@ The following modules are imported and setup:
 - Flask-sqlalchemy
 - Pytest
 
-The layout is setup as bootstrap - cerulean.
+The default layout is setup as bootstrap - cerulean.
