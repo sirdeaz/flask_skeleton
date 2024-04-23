@@ -22,9 +22,10 @@ def create_app(config_class = Config):
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
-    from .models import User
+    from app.models.user import User
     @login_manager.user_loader
     def load_user(user_id):
         return db.session().query(User).get(int(user_id))
 
     return app
+ 

@@ -4,6 +4,7 @@ import os
 
 from app import create_app
 from app.extensions import db
+from app.models.user import User
 
 
 @pytest.fixture
@@ -12,6 +13,7 @@ def app():
 
     class Config:
         TESTING = True
+        SECRET_KEY = 'testkey'
         SQLALCHEMY_DATABASE_URI = f'sqlite:///{db_path}'
 
     app = create_app(Config)
@@ -27,3 +29,12 @@ def app():
 @pytest.fixture
 def client(app):
     return app.test_client()
+
+@pytest.fixture
+def user(app):
+    with app.app_context():
+        user = User(email='test@example.com', first_name='Test', last_name='User', password='password')
+        db.session.add(user)
+        db.session.commit()
+        
+    return user
