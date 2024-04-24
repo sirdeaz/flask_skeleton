@@ -16,7 +16,7 @@ def login_post():
     remember = True if request.form.get('remember') else False
 
     if not email or not password:
-        flash('Please check your login details and try again.', 'error')
+        flash('All fields are required.', 'error')
         return redirect(url_for('auth.login'))
 
     user = db.session.query(User).filter_by(email=email).first()
@@ -42,7 +42,7 @@ def signup_post():
     password = request.form.get('password')
 
     if not email or not first_name or not last_name or not password:
-        flash('All fields are required', 'error')
+        flash('All fields are required.', 'error')
         return redirect(url_for('auth.signup'))
 
     user = db.session.query(User).filter_by(email=email).first()
