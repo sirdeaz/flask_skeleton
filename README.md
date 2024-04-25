@@ -1,9 +1,10 @@
 This is a Flask Skeleton app.
 
-The following modules are imported and setup:
+The following modules are included and setup:
 - Flask
 - Flask-migrate
 - Flask-sqlalchemy
+- Flask-login
 - Pytest
 
-The default layout is setup as bootstrap - cerulean.
+The default layout is provided by bootstrap - cerulean.
